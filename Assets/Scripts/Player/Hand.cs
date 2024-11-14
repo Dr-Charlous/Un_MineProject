@@ -26,7 +26,7 @@ public class Hand : MonoBehaviour
         _armMeshTransform.position = Vector3.Lerp(_armMeshTransform.position, transform.position, _lerpDelay);
         _armMeshTransform.rotation = Quaternion.Lerp(_armMeshTransform.rotation, transform.rotation, _lerpDelay);
 
-        if (Input.GetKeyDown(_key))
+        if (Input.GetKeyDown(_key) && _objectInHand != null)
         {
             var objectComponent = _objectInHand.GetComponent<ObjectsComponents>();
 
