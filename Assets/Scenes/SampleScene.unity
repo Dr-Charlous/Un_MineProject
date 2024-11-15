@@ -3698,7 +3698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -7051,6 +7051,7 @@ GameObject:
   - component: {fileID: 1995366110083806345}
   - component: {fileID: 1995366110083806342}
   - component: {fileID: 1995366110083806344}
+  - component: {fileID: 1995366110083806346}
   m_Layer: 0
   m_Name: First Person Player
   m_TagString: Untagged
@@ -7096,9 +7097,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d49dad664da1a49a749c1e0feab0a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsMoving: 0
   _controller: {fileID: 1995366110083806342}
   _speed: 5
-  _runSpeed: 2
+  _runSpeed: 3
   _gravity: -15
   _jumpForce: 3
   _groundDistance: 0.4
@@ -7124,6 +7126,25 @@ Transform:
   - {fileID: 1995366110434376846}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1995366110083806346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995366110083806340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886cc0eb18426464f804fa0a31e70d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMove: {fileID: 1995366110083806344}
+  _headTransform: {fileID: 1995366110346899397}
+  _headUp: {x: 0, y: 1.75, z: 0}
+  _headDown: {x: 0, y: 1.45, z: 0}
+  _headTarget: {x: 0, y: 0, z: 0}
+  _valueLerp: 0.01
+  _valueSpeed: 0.25
 --- !u!1 &1995366110346899392
 GameObject:
   m_ObjectHideFlags: 0
@@ -7215,7 +7236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493fb372e56e74649b9ae9b2e45bd638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mouseSensitivity: 650
+  _mouseSensitivity: 1000
   _playerBody: {fileID: 1995366110083806345}
 --- !u!4 &1995366110346899397
 Transform:
