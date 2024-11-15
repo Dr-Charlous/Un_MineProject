@@ -22,6 +22,11 @@ public class Interactions : MonoBehaviour
 
                 if (door != null)
                     door.ChangeTarget();
+
+                var inter = hit.transform.GetComponent<Interactible>();
+
+                if (inter != null)
+                    inter.ChangeTarget();
             }
 
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue);
