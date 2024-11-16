@@ -8,9 +8,18 @@ public class Interactions : MonoBehaviour
     [SerializeField] LayerMask _interactions;
     [SerializeField] GameObject _uiText;
 
+    public Hand[] Hands;
+    public ObjectsComponents[] Objects;
+
     private void Update()
     {
         RaycastHit hit;
+
+        if (Input.GetKeyDown(KeyCode.Q) && Objects[0] != null)
+        {
+            Objects[0].Grab(null);
+            Objects[0] = null;
+        }
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, _distance, _interactions))
         {
@@ -27,11 +36,26 @@ public class Interactions : MonoBehaviour
 
                 if (inter != null)
                     inter.ChangeTarget();
-            }
 
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue);
+                var obj = hit.transform.GetComponent<ObjectsComponents>();
+
+                if (obj != null)
+                {
+                    obj.Grab(Hands[0].HandTransform);
+                    Objects[0] = obj;
+                }
+            }
         }
         else
             _uiText.SetActive(false);
+
+        //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+
+        Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(Vector3.forward) * _distance);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hand : MonoBehaviour
 {
     public GameObject[] ObjectsInPocket;
+    public Transform HandTransform;
 
     [SerializeField] Transform _armMeshTransform;
     [SerializeField] Transform _handTransform;
@@ -14,6 +15,8 @@ public class Hand : MonoBehaviour
 
     private void Start()
     {
+        HandTransform = _handTransform;
+
         if (ObjectsInPocket[0] != null)
             ChangeHand(ObjectsInPocket[0]);
 
