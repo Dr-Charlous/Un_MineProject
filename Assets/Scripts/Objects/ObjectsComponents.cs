@@ -38,6 +38,8 @@ public class ObjectsComponents : MonoBehaviour
         else
         {
             transform.SetParent(_originalParent);
+            transform.localScale = Vector3.one;
+
             _rb = gameObject.AddComponent<Rigidbody>();
             _rb.AddForce(transform.forward * 10, ForceMode.Impulse);
         }
