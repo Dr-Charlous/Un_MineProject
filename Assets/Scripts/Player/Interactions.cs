@@ -39,7 +39,7 @@ public class Interactions : MonoBehaviour
 
                 var obj = hit.transform.GetComponent<ObjectsComponents>();
 
-                if (obj != null)
+                if (obj != null && Objects[0] == null)
                 {
                     obj.Grab(Hands[0].HandTransform);
                     Objects[0] = obj;
