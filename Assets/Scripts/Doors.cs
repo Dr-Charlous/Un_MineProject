@@ -11,13 +11,13 @@ public class Doors : MonoBehaviour
 
     private void Start()
     {
-        _closePos = transform.position;
+        _closePos = transform.localPosition;
         _actualTarget = _closePos;
     }
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, _actualTarget, _doorSpeed);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, _actualTarget, _doorSpeed);
     }
 
     public void ChangeTarget()
