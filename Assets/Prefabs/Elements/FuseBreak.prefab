@@ -153,9 +153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a780d7e0fc1fa4480fd4b9a516dd60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SubType: 0
   IsReplace: 1
   IsBreak: 0
   _breakTimer: 60
+  _breakTimerRandomRange: {x: -30, y: 40}
   _objectMeshReference: {fileID: 2030829966002867626}
   _particuleEffect: {fileID: 8594438488817351377}
 --- !u!1 &8594438488817351377

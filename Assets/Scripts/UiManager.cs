@@ -41,4 +41,9 @@ public class UiManager : MonoBehaviour
         GameManager.Instance.Player.Look.MouseSensitivity = _slider.value;
         _uiText.text = _slider.value + "/" + _slider.maxValue;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

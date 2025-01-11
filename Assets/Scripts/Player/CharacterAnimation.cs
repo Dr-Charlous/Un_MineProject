@@ -21,6 +21,8 @@ public class CharacterAnimation : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.Instance.Ui.IsGamePause)
+        {
         if (_timer >= 0)
             _timer -= Time.deltaTime;
         else
@@ -40,7 +42,7 @@ public class CharacterAnimation : MonoBehaviour
         }
         else
             _headTransform.localPosition = Vector3.Lerp(_headTransform.localPosition, _headDown, 0.01f);
-
+        }
     }
 
     void Check()
