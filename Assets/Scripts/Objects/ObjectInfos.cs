@@ -11,4 +11,12 @@ public class ObjectInfos : ScriptableObject
         Tool,
         Change
     }
+
+    public ObjectSubType SubType;
+
+    public enum ObjectSubType
+    {
+        Fuse,
+        Pipe
+    }
 }

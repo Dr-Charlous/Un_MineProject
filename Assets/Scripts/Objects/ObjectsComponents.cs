@@ -28,6 +28,7 @@ public class ObjectsComponents : MonoBehaviour
         else if (ObjectInfos.Type == ObjectInfos.ObjectType.Change)
         {
             Debug.Log("Change use");
+            Destroy(this.gameObject);
             return true;
         }
         else

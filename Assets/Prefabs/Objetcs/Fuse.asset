@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58050562f8d6c334fb6d1fc4fbaa6421, type: 3}
   m_Name: Fuse
   m_EditorClassIdentifier: 
-  Type: 0
+  Type: 2

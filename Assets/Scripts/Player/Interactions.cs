@@ -53,6 +53,24 @@ public class Interactions : MonoBehaviour
                     obj.Grab(Hands[0].HandTransform);
                     Objects[0] = obj;
                 }
+
+                //Objects placement
+                var placement = hit.transform.GetComponent<ObjectPlacement>();
+
+                if (placement != null && Objects[0] != null)
+                {
+                    if (!placement.IsReplace && Objects[0].ObjectInfos.Type == ObjectInfos.ObjectType.Change && Objects[0].ObjectInfos.SubType == placement.SubType)
+                    {
+                        placement.IsReplace = Objects[0].Use();
+                        Hands[0].ObjInfos = null;
+                        Destroy(Objects[0]);
+                        Objects[0] = null;
+
+                        placement.Repair();
+                    }
+                    else
+                        Debug.Log("Not the right one or not brake yet");
+                }
             }
         }
         else

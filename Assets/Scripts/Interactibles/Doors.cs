@@ -5,6 +5,7 @@ using UnityEngine;
 public class Doors : MonoBehaviour
 {
     public bool IsLocked = false;
+    public bool IsAutoClose = true;
 
     [SerializeField] Vector3 _openPos;
     [SerializeField] Vector3 _closePos;
@@ -22,14 +23,17 @@ public class Doors : MonoBehaviour
     }
     private void Update()
     {
-        if (_isDoorOpen && !GameManager.Instance.Ui.IsGamePause)
+        if (IsAutoClose)
         {
-            _timer += Time.deltaTime;
-
-            if (_timer >= _timeDoorStayOpen)
+            if (_isDoorOpen && !GameManager.Instance.Ui.IsGamePause)
             {
-                _timer = 0;
-                ChangeTarget();
+                _timer += Time.deltaTime;
+
+                if (_timer >= _timeDoorStayOpen)
+                {
+                    _timer = 0;
+                    ChangeTarget();
+                }
             }
         }
     }
