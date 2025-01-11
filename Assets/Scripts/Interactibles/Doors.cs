@@ -7,6 +7,7 @@ public class Doors : MonoBehaviour
     public bool IsLocked = false;
     public bool IsAutoClose = true;
 
+    [SerializeField] Transform _door;
     [SerializeField] Vector3 _openPos;
     [SerializeField] Vector3 _openRot;
     [SerializeField] Vector3 _closePos;
@@ -21,8 +22,8 @@ public class Doors : MonoBehaviour
 
     private void Start()
     {
-        _closePos = transform.localPosition;
-        _closeRot = transform.localRotation.eulerAngles;
+        _closePos = _door.localPosition;
+        _closeRot = _door.localRotation.eulerAngles;
         _actualTargetPos = _closePos;
         _actualTargetRot = _closeRot;
     }
@@ -45,8 +46,8 @@ public class Doors : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.localPosition = Vector3.Lerp(transform.localPosition, _actualTargetPos, _doorSpeed);
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(_actualTargetRot), _doorSpeed);
+        _door.localPosition = Vector3.Lerp(_door.localPosition, _actualTargetPos, _doorSpeed);
+        _door.localRotation = Quaternion.Lerp(_door.localRotation, Quaternion.Euler(_actualTargetRot), _doorSpeed);
     }
 
     public void ChangeTarget()
