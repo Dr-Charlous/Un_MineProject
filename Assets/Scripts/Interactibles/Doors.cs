@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Doors : MonoBehaviour
 {
+    public bool IsLocked = false;
+
     [SerializeField] Vector3 _openPos;
     [SerializeField] Vector3 _closePos;
     [SerializeField] Vector3 _actualTarget;
@@ -22,9 +24,12 @@ public class Doors : MonoBehaviour
 
     public void ChangeTarget()
     {
-        if (_actualTarget != _openPos)
-            _actualTarget = _openPos;
-        else
-            _actualTarget = _closePos;
+        if (!IsLocked)
+        {
+            if (_actualTarget != _openPos)
+                _actualTarget = _openPos;
+            else
+                _actualTarget = _closePos;
+        }
     }
 }

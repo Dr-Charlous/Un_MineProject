@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interactible : MonoBehaviour
 {
     public GameObject ActiveObjectInteract;
+
     [SerializeField] Vector3 _openRot;
     [SerializeField] Vector3 _closeRot;
     [SerializeField] Vector3 _actualTarget;

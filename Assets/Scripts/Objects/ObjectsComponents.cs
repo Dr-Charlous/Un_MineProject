@@ -15,13 +15,17 @@ public class ObjectsComponents : MonoBehaviour
 
     public virtual void Use()
     {
-        if (ObjectInfos.Type == ObjectInfos.WeaponType.Sword)
+        if (ObjectInfos.Type == ObjectInfos.ObjectType.Key)
         {
-            Debug.Log("Sword attack");
+            Debug.Log("Key use");
         }
-        else if (ObjectInfos.Type == ObjectInfos.WeaponType.Gun)
+        else if (ObjectInfos.Type == ObjectInfos.ObjectType.Tool)
         {
-            Debug.Log("Gun attack");
+            Debug.Log("Tool use");
+        }
+        else if (ObjectInfos.Type == ObjectInfos.ObjectType.Change)
+        {
+            Debug.Log("Change use");
         }
     }
 

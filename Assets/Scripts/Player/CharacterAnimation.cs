@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Animation : MonoBehaviour
+public class CharacterAnimation : MonoBehaviour
 {
     [SerializeField] PlayerMovement _playerMove;
     [SerializeField] Transform _headTransform;
