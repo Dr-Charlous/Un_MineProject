@@ -4,12 +4,12 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
+    public bool IsGamePause = false;
+
     [Header("Ui :")]
     [SerializeField] Transform _uiMenu;
     [SerializeField] TextMeshProUGUI _uiText;
     [SerializeField] Slider _slider;
-
-    public bool IsUiActive = false;
 
     private void Start()
     {
@@ -22,7 +22,7 @@ public class UiManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             _uiMenu.gameObject.SetActive(!_uiMenu.gameObject.activeSelf);
-            IsUiActive = _uiMenu.gameObject.activeSelf;
+            IsGamePause = _uiMenu.gameObject.activeSelf;
 
             if (Cursor.lockState != CursorLockMode.Locked)
                 Cursor.lockState = CursorLockMode.Locked;

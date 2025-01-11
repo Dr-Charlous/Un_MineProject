@@ -28,47 +28,50 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //Ground check
-        _isGrounded = Physics.CheckSphere(_groundCheck.position, _groundDistance, _groundMask);
-
-        if (_isGrounded && _velocity.y < 0)
+        if (!GameManager.Instance.Ui.IsGamePause)
         {
-            _velocity.y = -2f;
+            //Ground check
+            _isGrounded = Physics.CheckSphere(_groundCheck.position, _groundDistance, _groundMask);
+
+            if (_isGrounded && _velocity.y < 0)
+            {
+                _velocity.y = -2f;
+            }
+
+            //Move
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+
+            Vector3 move = transform.right * x + transform.forward * z;
+
+            if (move.magnitude > 0)
+                IsMoving = true;
+            else
+                IsMoving = false;
+
+            //Run
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                _controller.Move(move * (_speed + _runSpeed) * Time.deltaTime);
+                IsRunning = true;
+            }
+            else
+            {
+                _controller.Move(move * _speed * Time.deltaTime);
+                IsRunning = false;
+            }
+
+            //Jump
+            if (Input.GetButtonDown("Jump") && _isGrounded)
+            {
+                _velocity.y = Mathf.Sqrt(_jumpForce * -2f * _gravity);
+            }
+
+
+            _velocity.y += _gravity * Time.deltaTime;
+
+            _controller.Move(_velocity * Time.deltaTime);
         }
-
-        //Move
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        if (move.magnitude > 0)
-            IsMoving = true;
-        else 
-            IsMoving = false;
-
-        //Run
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            _controller.Move(move * (_speed + _runSpeed) * Time.deltaTime);
-            IsRunning = true;
-        }
-        else
-        {
-            _controller.Move(move * _speed * Time.deltaTime);
-            IsRunning = false;
-        }
-
-        //Jump
-        if (Input.GetButtonDown("Jump") && _isGrounded)
-        {
-            _velocity.y = Mathf.Sqrt(_jumpForce * -2f * _gravity);
-        }
-
-
-        _velocity.y += _gravity * Time.deltaTime;
-
-        _controller.Move(_velocity * Time.deltaTime);
     }
 
     private void OnDrawGizmosSelected()

@@ -4,6 +4,7 @@ public class Hand : MonoBehaviour
 {
     public GameObject[] ObjectsInPocket;
     public Transform HandTransform;
+    public ObjectInfos ObjInfos = null;
 
     [SerializeField] Transform _armMeshTransform;
     [SerializeField] Transform _handTransform;
@@ -27,15 +28,15 @@ public class Hand : MonoBehaviour
         _armMeshTransform.position = Vector3.Lerp(_armMeshTransform.position, transform.position, _lerpDelay);
         _armMeshTransform.rotation = Quaternion.Lerp(_armMeshTransform.rotation, transform.rotation, _lerpDelay);
 
-        if (Input.GetKeyDown(_key) && _objectInHand != null)
-        {
-            var objectComponent = _objectInHand.GetComponent<ObjectsComponents>();
+        //if (Input.GetKeyDown(_key) && _objectInHand != null)
+        //{
+        //    var objectComponent = _objectInHand.GetComponent<ObjectsComponents>();
 
-            if (objectComponent != null)
-            {
-                objectComponent.Use();
-            }
-        }
+        //    if (objectComponent != null)
+        //    {
+        //        objectComponent.Use();
+        //    }
+        //}
     }
 
     void ChangeHand(GameObject obj)
@@ -43,10 +44,16 @@ public class Hand : MonoBehaviour
         if (_objectInHand != obj)
         {
             if (_objectInHand != null)
+            {
                 Destroy(_objectInHand);
+                ObjInfos = null;
+            }
 
             if (obj != null)
+            {
                 _objectInHand = Instantiate(obj, _handTransform);
+                ObjInfos = _objectInHand.GetComponent<ObjectsComponents>().ObjectInfos;
+            }
         }
     }
 }

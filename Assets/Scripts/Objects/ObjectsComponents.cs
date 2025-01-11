@@ -13,20 +13,25 @@ public class ObjectsComponents : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    public virtual void Use()
+    public virtual bool Use()
     {
         if (ObjectInfos.Type == ObjectInfos.ObjectType.Key)
         {
             Debug.Log("Key use");
+            return true;
         }
         else if (ObjectInfos.Type == ObjectInfos.ObjectType.Tool)
         {
             Debug.Log("Tool use");
+            return true;
         }
         else if (ObjectInfos.Type == ObjectInfos.ObjectType.Change)
         {
             Debug.Log("Change use");
+            return true;
         }
+        else
+            return false;
     }
 
     public void Grab(Transform tf)

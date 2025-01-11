@@ -25,16 +25,27 @@ public class Interactions : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                //Doors
                 var door = hit.transform.GetComponent<Doors>();
 
                 if (door != null)
-                    door.ChangeTarget();
+                {
+                    if (Objects[0] != null && door.IsLocked)
+                        door.IsLocked = !Objects[0].Use();
 
+                    if (!door.IsLocked)
+                        door.ChangeTarget();
+                    else
+                        Debug.Log("Door close");
+                }
+
+                //Interactibles
                 var inter = hit.transform.GetComponent<Interactible>();
 
                 if (inter != null)
                     inter.ChangeTarget();
 
+                //Objects
                 var obj = hit.transform.GetComponent<ObjectsComponents>();
 
                 if (obj != null && Objects[0] == null)

@@ -18,7 +18,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.Instance.Ui.IsUiActive)
+        if (!GameManager.Instance.Ui.IsGamePause)
         {
             float mouseX = Input.GetAxis("Mouse X") * MouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * MouseSensitivity * Time.deltaTime;
