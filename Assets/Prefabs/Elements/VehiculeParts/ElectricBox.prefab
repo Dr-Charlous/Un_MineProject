@@ -855,6 +855,10 @@ PrefabInstance:
       propertyPath: IsAutoClose
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4736952953420392112, guid: 7c0c33ee15a17184888a1c23e769b384, type: 3}
+      propertyPath: IsAutoClose
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5765174754285302132, guid: 7c0c33ee15a17184888a1c23e769b384, type: 3}
       propertyPath: m_Name
       value: ParentDoor
