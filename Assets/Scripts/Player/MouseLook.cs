@@ -3,8 +3,8 @@ using UnityEngine;
 public class MouseLook : MonoBehaviour
 {
     [Header("Values :")]
-    [Range(100, 1000)]
-    public float MouseSensitivity = 500f;
+    [Range(0, 200)]
+    public float MouseSensitivity = 100f;
 
     [SerializeField] Transform _playerBody;
 

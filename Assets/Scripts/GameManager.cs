@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
             Instance = this;
         else
             Debug.LogError("2 GameManagers");
+
+        QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        Application.targetFrameRate = 60;
     }
     #endregion
 

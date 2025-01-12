@@ -16,9 +16,11 @@ public class ObjectPlacement : MonoBehaviour
 
     private void Start()
     {
-        _objectMeshReference.SetActive(true);
-        _particuleEffect.SetActive(false);
-        _timerTarget = _breakTimer + Random.Range(_breakTimerRandomRange.x, _breakTimerRandomRange.y);
+        if (SubType == ObjectInfos.ObjectSubType.Fuse || SubType == ObjectInfos.ObjectSubType.Pipe)
+            BreakTypeStart();
+
+        if (SubType == ObjectInfos.ObjectSubType.Fuel)
+            FuelTypeStart();
     }
 
     private void Update()
@@ -26,29 +28,11 @@ public class ObjectPlacement : MonoBehaviour
         if (!GameManager.Instance.Ui.IsGamePause)
         {
             if (SubType == ObjectInfos.ObjectSubType.Fuse || SubType == ObjectInfos.ObjectSubType.Pipe)
-                BreakingTypeUpdate();
+                BreakTypeUpdate();
 
             if (SubType == ObjectInfos.ObjectSubType.Fuel)
                 FuelTypeUpdate();
         }
-    }
-
-    void BreakingTypeUpdate()
-    {
-        if (_timer >= _timerTarget)
-        {
-            IsBreak = true;
-            IsReplace = false;
-            _objectMeshReference.SetActive(false);
-            _particuleEffect.SetActive(true);
-        }
-        else
-            _timer += Time.deltaTime;
-    }
-    
-    void FuelTypeUpdate()
-    {
-        
     }
 
     public void Repair()
@@ -60,6 +44,27 @@ public class ObjectPlacement : MonoBehaviour
             FuelRepair();
     }
 
+    #region BreakType
+    void BreakTypeStart()
+    {
+        _objectMeshReference.SetActive(true);
+        _particuleEffect.SetActive(false);
+        _timerTarget = _breakTimer + Random.Range(_breakTimerRandomRange.x, _breakTimerRandomRange.y);
+    }
+
+    void BreakTypeUpdate()
+    {
+        if (_timer >= _timerTarget)
+        {
+            IsBreak = true;
+            IsReplace = false;
+            _objectMeshReference.SetActive(false);
+            _particuleEffect.SetActive(true);
+        }
+        else
+            _timer += Time.deltaTime;
+    }
+
     void BreakRepair()
     {
         IsBreak = false;
@@ -69,9 +74,46 @@ public class ObjectPlacement : MonoBehaviour
         _objectMeshReference.SetActive(true);
         _particuleEffect.SetActive(false);
     }
+    #endregion
+
+    #region FuelType
+    void FuelTypeStart()
+    {
+        IsBreak = false;
+        IsReplace = false;
+        _objectMeshReference.SetActive(true);
+        _particuleEffect.SetActive(true);
+        _timerTarget = _breakTimer + Random.Range(_breakTimerRandomRange.x, _breakTimerRandomRange.y);
+    }
+
+    void FuelTypeUpdate()
+    {
+        if (_timer >= _timerTarget)
+        {
+            IsBreak = true;
+            _particuleEffect.SetActive(false);
+        }
+        else
+            _timer += Time.deltaTime;
+    }
 
     void FuelRepair()
     {
+        if (IsBreak)
+        {
+            _timer = 0;
+            _timerTarget = _breakTimer + Random.Range(_breakTimerRandomRange.x, _breakTimerRandomRange.y);
+            _particuleEffect.SetActive(true);
+        }
+        else
+        {
+            _timerTarget -= _timer;
+            _timerTarget += _breakTimer + Random.Range(_breakTimerRandomRange.x, _breakTimerRandomRange.y);
+            _timer = 0;
+        }
 
+        IsBreak = false;
+        IsReplace = false;
     }
+    #endregion
 }
