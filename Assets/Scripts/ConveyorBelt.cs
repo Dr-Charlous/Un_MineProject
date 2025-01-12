@@ -7,6 +7,7 @@ public class ConveyorBelt : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        other.transform.position += _direction.normalized * _speed * Time.deltaTime;
+        if (other.GetComponent<Belt>() != null && !GameManager.Instance.Ui.IsGamePause)
+            other.transform.position += _direction.normalized * _speed * Time.deltaTime;
     }
 }

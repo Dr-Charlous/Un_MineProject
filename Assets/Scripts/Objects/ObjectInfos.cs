@@ -17,6 +17,7 @@ public class ObjectInfos : ScriptableObject
     public enum ObjectSubType
     {
         Fuse,
-        Pipe
+        Pipe,
+        Fuel
     }
 }
