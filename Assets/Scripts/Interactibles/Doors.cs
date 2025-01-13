@@ -22,8 +22,8 @@ public class Doors : MonoBehaviour
 
     private void Start()
     {
-        _closePos = _door.localPosition;
-        _closeRot = _door.localRotation.eulerAngles;
+        //_closePos = _door.localPosition;
+        //_closeRot = _door.localRotation.eulerAngles;
         _actualTargetPos = _closePos;
         _actualTargetRot = _closeRot;
     }
@@ -31,7 +31,7 @@ public class Doors : MonoBehaviour
     {
         if (IsAutoClose)
         {
-            if (_isDoorOpen && !GameManager.Instance.Ui.IsGamePause)
+            if (_isDoorOpen && !GameManager.Instance.IsGamePause)
             {
                 _timer += Time.deltaTime;
 

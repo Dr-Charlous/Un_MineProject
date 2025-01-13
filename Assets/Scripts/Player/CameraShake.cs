@@ -3,6 +3,17 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
+    public float TimeDuration = 1;
+    public float Magnitude = 0.01f;
+
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        StartCoroutine(Shake(_timeDuration, _magnitudeLoss));
+    //    }
+    //}
+
     public IEnumerator Shake(float duration, float magnitude)
     {
         Vector3 originalPosition = transform.localPosition;

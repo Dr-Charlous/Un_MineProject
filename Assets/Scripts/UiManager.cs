@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
-    public bool IsGamePause = false;
-
     [Header("Ui :")]
     [SerializeField] Transform _uiMenu;
     [SerializeField] TextMeshProUGUI _uiText;
@@ -22,7 +20,7 @@ public class UiManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             _uiMenu.gameObject.SetActive(!_uiMenu.gameObject.activeSelf);
-            IsGamePause = _uiMenu.gameObject.activeSelf;
+            GameManager.Instance.IsGamePause = _uiMenu.gameObject.activeSelf;
 
             if (Cursor.lockState != CursorLockMode.Locked)
                 Cursor.lockState = CursorLockMode.Locked;

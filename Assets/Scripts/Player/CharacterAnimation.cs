@@ -21,7 +21,7 @@ public class CharacterAnimation : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.Instance.Ui.IsGamePause)
+        if (!GameManager.Instance.IsGamePause)
         {
         if (_timer >= 0)
             _timer -= Time.deltaTime;

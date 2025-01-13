@@ -18,5 +18,15 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public PlayerComponentManager Player;
+    public CameraShake Shaker;
     public UiManager Ui;
+    [Header("")]
+    public LightManager Lights;
+    public RadarMining Mining;
+    public ConveyorBelt Belt;
+    public ObjectPlacement Furnase;
+    public ObjectPlacement[] Fuses;
+    public VehiculePanelManager PanelControl;
+    [Header("")]
+    public bool IsGamePause = false;
 }

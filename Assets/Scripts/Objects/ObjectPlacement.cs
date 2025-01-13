@@ -6,7 +6,7 @@ public class ObjectPlacement : MonoBehaviour
     public bool IsReplace = true;
     public bool IsBreak = false;
 
-    [SerializeField] [Range(10f, 120f)] float _breakTimer = 60f;
+    [SerializeField] float _breakTimer = 60f;
     [SerializeField] [Tooltip("Min/Max range random")] Vector2 _breakTimerRandomRange = new Vector2(-10, 10);
     [SerializeField] GameObject _objectMeshReference;
     [SerializeField] GameObject _particuleEffect;
@@ -25,7 +25,7 @@ public class ObjectPlacement : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.Instance.Ui.IsGamePause)
+        if (!GameManager.Instance.IsGamePause)
         {
             if (SubType == ObjectInfos.ObjectSubType.Fuse || SubType == ObjectInfos.ObjectSubType.Pipe)
                 BreakTypeUpdate();

@@ -1,28 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactible : MonoBehaviour
 {
     public GameObject ActiveObjectInteract;
+    public bool IsActive = false;
 
     [SerializeField] Vector3 _openRot;
     [SerializeField] Vector3 _closeRot;
     [SerializeField] Vector3 _actualTarget;
     [SerializeField] float _speed;
-    [SerializeField] bool _isactive = false;
 
     private void Start()
     {
-        if (_isactive)
+        if (IsActive)
         {
             _actualTarget = _openRot;
-            _isactive = true;
+            IsActive = true;
         }
         else
         {
             _actualTarget = _closeRot;
-            _isactive = false;
+            IsActive = false;
         }
     }
 
@@ -30,7 +28,7 @@ public class Interactible : MonoBehaviour
     {
         if (ActiveObjectInteract != null)
         {
-            if (_isactive)
+            if (IsActive)
             {
                 ActiveObjectInteract.SetActive(true);
             }
@@ -51,12 +49,26 @@ public class Interactible : MonoBehaviour
         if (_actualTarget != _openRot)
         {
             _actualTarget = _openRot;
-            _isactive = true;
+            IsActive = true;
         }
         else
         {
             _actualTarget = _closeRot;
-            _isactive = false;
+            IsActive = false;
+        }
+    }
+
+    public void ChangeTarget(bool value)
+    {
+        if (value)
+        {
+            _actualTarget = _openRot;
+            IsActive = true;
+        }
+        else
+        {
+            _actualTarget = _closeRot;
+            IsActive = false;
         }
     }
 }
