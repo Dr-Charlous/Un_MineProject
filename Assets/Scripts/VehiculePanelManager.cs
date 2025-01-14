@@ -4,6 +4,7 @@ public class VehiculePanelManager : MonoBehaviour
 {
     public Vector3 Position = Vector3.zero;
     public Interactible Power;
+    public Interactible PowerLights;
 
     [SerializeField] Interactible _front;
     [SerializeField] Interactible _back;
@@ -14,41 +15,44 @@ public class VehiculePanelManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 direction = Vector3.zero;
-
-        if (GameManager.Instance.Furnase.IsBreak)
-            Power.ChangeTarget(false);
-
-        if (Power.IsActive)
+        if (!GameManager.Instance.IsGamePause)
         {
-            StartCoroutine(GameManager.Instance.Shaker.Shake(0.1f, 0.01f));
+            Vector3 direction = Vector3.zero;
 
-            if (_front.IsActive)
-            {
-                direction += Vector3.up;
-            }
-            if (_back.IsActive)
-            {
-                direction += Vector3.down;
-            }
-            if (_right.IsActive)
-            {
-                direction += Vector3.right;
-            }
-            if (_left.IsActive)
-            {
-                direction += Vector3.left;
-            }
-        }
+            if (GameManager.Instance.Furnase.IsBreak)
+                Power.ChangeTarget(false);
 
-        if (direction != Vector3.zero)
-        {
-            var movement = direction.normalized * _speedMove * Time.deltaTime;
-            var rotation = direction.normalized * _speedRot * Time.deltaTime;
+            if (Power.IsActive)
+            {
+                StartCoroutine(GameManager.Instance.Shaker.Shake(0.1f, 0.01f));
 
-            Position += movement;
+                if (_front.IsActive)
+                {
+                    direction += Vector3.up;
+                }
+                if (_back.IsActive)
+                {
+                    direction += Vector3.down;
+                }
+                if (_right.IsActive)
+                {
+                    direction += Vector3.right;
+                }
+                if (_left.IsActive)
+                {
+                    direction += Vector3.left;
+                }
+            }
 
-            GameManager.Instance.Mining.Move(new Vector3(0, movement.y), Quaternion.Euler(new Vector3(0, 0, rotation.x)));
+            if (direction != Vector3.zero)
+            {
+                var movement = direction.normalized * _speedMove * Time.deltaTime;
+                var rotation = direction.normalized * _speedRot * Time.deltaTime;
+
+                Position += movement;
+
+                GameManager.Instance.Mining.Move(new Vector3(0, movement.y), Quaternion.Euler(new Vector3(0, 0, rotation.x)));
+            }
         }
     }
 }

@@ -30,7 +30,7 @@ public class LightComponent : MonoBehaviour
 
         if (!GameManager.Instance.IsGamePause)
         {
-            if (GameManager.Instance.PanelControl.Power.IsActive && !GameManager.Instance.Fuses[0].IsBreak)
+            if (GameManager.Instance.PanelControl.Power.IsActive && GameManager.Instance.PanelControl.PowerLights.IsActive && !GameManager.Instance.Fuses[0].IsBreak)
             {
                 if (!IsActive)
                 {

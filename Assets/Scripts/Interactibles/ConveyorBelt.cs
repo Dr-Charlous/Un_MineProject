@@ -2,7 +2,13 @@ using UnityEngine;
 
 public class ConveyorBelt : MonoBehaviour
 {
-    [SerializeField] ObjectPlacement _furnase;
+    public GameObject DirtPrefab;
+    public GameObject RockPrefab;
+    public GameObject CoalPrefab;
+
+    [SerializeField] Transform _parentRessources;
+    [SerializeField] Portal _spawnPointRessources;
+    [Header("Move")]
     [SerializeField] Vector3 _direction;
     [SerializeField] float _speed;
 
@@ -12,7 +18,7 @@ public class ConveyorBelt : MonoBehaviour
     {
         if (!GameManager.Instance.IsGamePause)
         {
-            if (_furnase.IsBreak && _actualSpeed > 0)
+            if (GameManager.Instance.Furnase.IsBreak && _actualSpeed > 0)
             {
                 _actualSpeed -= Time.deltaTime;
 
@@ -36,5 +42,11 @@ public class ConveyorBelt : MonoBehaviour
             if (other.GetComponent<Belt>() != null && !GameManager.Instance.IsGamePause)
                 other.transform.position += _direction.normalized * _actualSpeed * Time.deltaTime;
         }
+    }
+
+    public void SpawnRessource(GameObject obj)
+    {
+        var objInst = Instantiate(obj, _spawnPointRessources.Gate.position, Quaternion.identity, _parentRessources);
+        objInst.transform.localScale *= Random.Range(1, 2);
     }
 }

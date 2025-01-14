@@ -83,7 +83,7 @@ public class ObjectPlacement : MonoBehaviour
         IsReplace = false;
         _objectMeshReference.SetActive(true);
         _particuleEffect.SetActive(true);
-        _timerTarget = _breakTimer + Random.Range(_breakTimerRandomRange.x, _breakTimerRandomRange.y);
+        _timerTarget = _breakTimer + _breakTimerRandomRange.y;
     }
 
     void FuelTypeUpdate()

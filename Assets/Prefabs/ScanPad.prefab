@@ -448,6 +448,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8b1ac38a026d34483f9b18d699c721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dirtPrefab: {fileID: 6472428945723403189, guid: 8b40a3279d4431144af5af7c8864bab9, type: 3}
+  _rockPrefab: {fileID: 6472428945723403189, guid: 587287f9b94097946bbb40431d64bbb7, type: 3}
   _coalPrefab: {fileID: 6472428945723403189, guid: 2e88f364602b1674ead34b812af517fc, type: 3}
-  _vehiculePosition: {x: 0, y: 0, z: 0}
+  _ressourceParent: {fileID: 0}
   _ressourcesLocation: []
+  _distanceSpawn: 3
+  _timerMine: 0.25

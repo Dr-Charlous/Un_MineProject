@@ -30,7 +30,12 @@ public class Portal : MonoBehaviour
 
     void Teleport(Transform tf)
     {
-        tf.transform.position += _connectPortal.Gate.position - Gate.position;
-        tf.transform.rotation = Quaternion.Euler(tf.transform.rotation.eulerAngles + _connectPortal.Gate.rotation.eulerAngles - Gate.rotation.eulerAngles);
+        if (_connectPortal == null)
+            Destroy(tf.gameObject);
+        else
+        {
+            tf.transform.position += _connectPortal.Gate.position - Gate.position;
+            tf.transform.rotation = Quaternion.Euler(tf.transform.rotation.eulerAngles + _connectPortal.Gate.rotation.eulerAngles - Gate.rotation.eulerAngles);
+        }
     }
 }
