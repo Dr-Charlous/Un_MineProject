@@ -6,4 +6,5 @@ public class PlayerComponentManager : MonoBehaviour
     public MouseLook Look;
     public CharacterAnimation Animation;
     public Interactions Interactions;
+    public PlayerStats Stats;
 }

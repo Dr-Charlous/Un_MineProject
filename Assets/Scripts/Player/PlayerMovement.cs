@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.Instance.IsGamePause)
+        if (!GameManager.Instance.IsGamePause && !GameManager.Instance.Player.Stats.IsDead)
         {
             //Ground check
             _isGrounded = Physics.CheckSphere(_groundCheck.position, _groundDistance, _groundMask);

@@ -9,6 +9,10 @@ public class Belt : MonoBehaviour
         var rb = other.GetComponent<Rigidbody>();
 
         if (rb != null)
-            rb.AddForce((transform.position - rb.transform.position) * _force, ForceMode.Force);
+        {
+            Vector3 direction = transform.position - rb.transform.position;
+            direction = new Vector3(direction.x, 0, direction.z);
+            rb.AddForce(direction * _force, ForceMode.Force);
+        }
     }
 }

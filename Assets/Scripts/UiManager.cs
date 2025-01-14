@@ -5,6 +5,9 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     [Header("Ui :")]
+    public UiScreenControl ScreenControl;
+    public UiPlayer UiPlayer;
+
     [SerializeField] Transform _uiMenu;
     [SerializeField] TextMeshProUGUI _uiTimer;
     [SerializeField] TextMeshProUGUI _uiText;
@@ -20,8 +23,11 @@ public class UiManager : MonoBehaviour
 
     private void Update()
     {
-        _time += Time.deltaTime;
-        _uiTimer.text = "Time : " + (int)_time;
+        if (!GameManager.Instance.IsGamePause)
+        {
+            _time += Time.deltaTime;
+            _uiTimer.text = "Time : " + (int)_time;
+        }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
