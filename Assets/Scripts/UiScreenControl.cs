@@ -19,7 +19,7 @@ public class UiScreenControl : MonoBehaviour
         if (!GameManager.Instance.IsGamePause)
         {
             //Air
-            if (!GameManager.Instance.PanelControl.Power.IsActive)
+            if (!GameManager.Instance.PanelControl.Power.IsActive || GameManager.Instance.Fuses[1].IsBreak)
             {
                 _air.fillAmount -= _airLoss * Time.deltaTime;
 
