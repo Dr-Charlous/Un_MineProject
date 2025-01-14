@@ -84,7 +84,7 @@ public class RadarMining : MonoBehaviour
 
     void Mine(Ressource ressource)
     {
-        if (!GameManager.Instance.IsGamePause)
+        if (!GameManager.Instance.IsGamePause && ressource != null)
         {
             if (ressource.Type != RessourcesType.Dirt
                 && ressource.Type != RessourcesType.Rock

@@ -21,7 +21,7 @@ public class Portal : MonoBehaviour
         if (_objType == ObjectType.Object && other.GetComponent<ObjectsComponents>() != null)
             Teleport(other.transform);
 
-        if (_objType == ObjectType.Belt && other.GetComponent<Belt>() != null)
+        if (_objType == ObjectType.Belt && other.GetComponent<BeltRef>() != null)
             Teleport(other.transform);
 
         if (_objType == ObjectType.Other)

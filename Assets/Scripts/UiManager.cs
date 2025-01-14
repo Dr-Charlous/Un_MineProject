@@ -6,8 +6,11 @@ public class UiManager : MonoBehaviour
 {
     [Header("Ui :")]
     [SerializeField] Transform _uiMenu;
+    [SerializeField] TextMeshProUGUI _uiTimer;
     [SerializeField] TextMeshProUGUI _uiText;
     [SerializeField] Slider _slider;
+
+    float _time = 0;
 
     private void Start()
     {
@@ -17,6 +20,9 @@ public class UiManager : MonoBehaviour
 
     private void Update()
     {
+        _time += Time.deltaTime;
+        _uiTimer.text = "Time : " + (int)_time;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             _uiMenu.gameObject.SetActive(!_uiMenu.gameObject.activeSelf);

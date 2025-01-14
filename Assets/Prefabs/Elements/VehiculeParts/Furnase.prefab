@@ -630,7 +630,7 @@ MonoBehaviour:
   SubType: 2
   IsReplace: 0
   IsBreak: 0
-  _breakTimer: 20
+  _breakTimer: 30
   _breakTimerRandomRange: {x: -10, y: 20}
   _objectMeshReference: {fileID: 2784145050289721911}
   _particuleEffect: {fileID: 3182010083006812770}
