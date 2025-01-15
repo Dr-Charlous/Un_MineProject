@@ -23,26 +23,29 @@ public class UiManager : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.Instance.IsGamePause)
+        if (!GameManager.Instance.Player.Stats.IsDead)
         {
-            _time += Time.deltaTime;
-            _uiTimer.text = "Time : " + (int)_time;
-        }
+            if (!GameManager.Instance.IsGamePause)
+            {
+                _time += Time.deltaTime;
+                _uiTimer.text = "Time : " + (int)_time;
+            }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            _uiMenu.gameObject.SetActive(!_uiMenu.gameObject.activeSelf);
-            GameManager.Instance.IsGamePause = _uiMenu.gameObject.activeSelf;
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                _uiMenu.gameObject.SetActive(!_uiMenu.gameObject.activeSelf);
+                GameManager.Instance.IsGamePause = _uiMenu.gameObject.activeSelf;
 
-            if (Cursor.lockState != CursorLockMode.Locked)
-                Cursor.lockState = CursorLockMode.Locked;
-            else
-                Cursor.lockState = CursorLockMode.None;
-        }
+                if (Cursor.lockState != CursorLockMode.Locked)
+                    Cursor.lockState = CursorLockMode.Locked;
+                else
+                    Cursor.lockState = CursorLockMode.None;
+            }
 
-        if (_uiMenu.gameObject.activeSelf)
-        {
-            Ui();
+            if (_uiMenu.gameObject.activeSelf)
+            {
+                Ui();
+            }
         }
     }
 
