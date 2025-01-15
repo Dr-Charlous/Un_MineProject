@@ -47,6 +47,8 @@ public class UiManager : MonoBehaviour
                 Ui();
             }
         }
+        else
+            Cursor.lockState = CursorLockMode.None;
     }
 
     void Ui()
