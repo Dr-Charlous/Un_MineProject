@@ -1558,7 +1558,7 @@ MonoBehaviour:
   Lights: {fileID: 270681564}
   Mining: {fileID: 231920481}
   Belt: {fileID: 1202867941}
-  Furnase: {fileID: 465804221}
+  Furnase: {fileID: 1167254006}
   Fuses:
   - {fileID: 886983641}
   - {fileID: 1980304697}
@@ -1933,17 +1933,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8327546387805523630, guid: 6995585195e1a9e4c890912ad20f5ada, type: 3}
   m_PrefabInstance: {fileID: 2655545872091857527}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &465804221 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4018298691575519278, guid: 6995585195e1a9e4c890912ad20f5ada, type: 3}
-  m_PrefabInstance: {fileID: 2655545872091857527}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0a780d7e0fc1fa4480fd4b9a516dd60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &467502782
 GameObject:
   m_ObjectHideFlags: 0
@@ -4877,6 +4866,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159880718}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1167254006 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4387210875909157943, guid: 6995585195e1a9e4c890912ad20f5ada, type: 3}
+  m_PrefabInstance: {fileID: 2655545872091857527}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5990b5a083e677b43a081ab8b778e613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1179100549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2583788532813640467, guid: 76923abb4051994409d690091f17ebca, type: 3}
@@ -10605,6 +10605,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 68218469}
     m_Modifications:
+    - target: {fileID: 4387210875909157943, guid: 6995585195e1a9e4c890912ad20f5ada, type: 3}
+      propertyPath: IsInfinit
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8327546387805523630, guid: 6995585195e1a9e4c890912ad20f5ada, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10726,7 +10730,7 @@ PrefabInstance:
     - target: {fileID: 795068385069661953, guid: 96b4f0a52cf10d143afb526c2c01d56d, type: 3}
       propertyPath: _furnase
       value: 
-      objectReference: {fileID: 465804221}
+      objectReference: {fileID: 0}
     - target: {fileID: 2944470444451904657, guid: 96b4f0a52cf10d143afb526c2c01d56d, type: 3}
       propertyPath: m_IsActive
       value: 0

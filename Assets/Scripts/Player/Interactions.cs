@@ -7,16 +7,15 @@ public class Interactions : MonoBehaviour
     [SerializeField] GameObject _uiText;
 
     public Hand[] Hands;
-    public ObjectsComponents[] Objects;
 
     private void Update()
     {
         RaycastHit hit;
 
-        if (Input.GetKeyDown(KeyCode.Q) && Objects[0] != null)
+        if (Input.GetKeyDown(KeyCode.Q) && Hands[0].ObjectInHand != null)
         {
-            Objects[0].Grab(null);
-            Objects[0] = null;
+            Hands[0].ObjectInHand.GetComponent<ObjectsComponents>().Grab(null);
+            Hands[0].ObjectInHand = null;
         }
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, _distance, _interactions))
@@ -30,8 +29,10 @@ public class Interactions : MonoBehaviour
 
                 if (door != null)
                 {
-                    if (Objects[0] != null && door.IsLocked)
-                        door.IsLocked = !Objects[0].Use();
+                    //var objComp = Hands[0].ObjectInHand.GetComponent<ObjectsComponents>();
+
+                    //if (objComp != null && door.IsLocked)
+                    //    door.IsLocked = !objComp.Use();
 
                     if (!door.IsLocked)
                         door.ChangeTarget();
@@ -48,28 +49,40 @@ public class Interactions : MonoBehaviour
                 //Objects
                 var obj = hit.transform.GetComponent<ObjectsComponents>();
 
-                if (obj != null && Objects[0] == null)
+                if (obj != null && Hands[0].ObjectInHand == null)
                 {
                     obj.Grab(Hands[0].HandTransform);
-                    Objects[0] = obj;
+                    Hands[0].ObjectInHand = obj.gameObject;
                 }
 
                 //Objects placement
                 var placement = hit.transform.GetComponent<ObjectPlacement>();
 
-                if (placement != null && Objects[0] != null)
+                if (placement != null && Hands[0].ObjectInHand != null)
                 {
-                    if (!placement.IsReplace && Objects[0].ObjectInfos.Type == ObjectInfos.ObjectType.Change && Objects[0].ObjectInfos.SubType == placement.SubType)
+                    var objComp = Hands[0].ObjectInHand.GetComponent<ObjectsComponents>();
+
+                    if (!placement.IsReplace && objComp.ObjectInfos.Type == ObjectInfos.ObjectType.Change && objComp.ObjectInfos.SubType == placement.SubType)
                     {
-                        placement.IsReplace = Objects[0].Use();
-                        Hands[0].ObjInfos = null;
-                        Destroy(Objects[0]);
-                        Objects[0] = null;
+                        placement.IsReplace = objComp.Use();
+                        Destroy(Hands[0].ObjectInHand);
+                        Hands[0].ObjectInHand = null;
 
                         placement.Repair();
                     }
                     else
                         Debug.Log("Not the right one or not brake yet");
+                }
+
+                //Furnase
+                var furnase = hit.transform.GetComponent<Furnase>();
+
+                if (furnase != null && Hands[0].ObjectInHand != null)
+                {
+                    furnase.Repair(Hands[0].ObjectInHand.GetComponent<Fuel>());
+
+                    Destroy(Hands[0].ObjectInHand);
+                    Hands[0].ObjectInHand = null;
                 }
             }
         }

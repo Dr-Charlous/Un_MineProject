@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public LightManager Lights;
     public RadarMining Mining;
     public ConveyorBelt Belt;
-    public ObjectPlacement Furnase;
+    public Furnase Furnase;
     public ObjectPlacement[] Fuses;
     public VehiculePanelManager PanelControl;
     [Header("")]

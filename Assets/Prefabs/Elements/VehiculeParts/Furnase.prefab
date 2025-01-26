@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 5436542154440761741}
   - component: {fileID: 7607568281179744681}
   - component: {fileID: 6109109073603302857}
-  - component: {fileID: 4018298691575519278}
+  - component: {fileID: 4387210875909157943}
   m_Layer: 7
   m_Name: Furnase
   m_TagString: Untagged
@@ -615,7 +615,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4018298691575519278
+--- !u!114 &4387210875909157943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -624,15 +624,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8374187003127515744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0a780d7e0fc1fa4480fd4b9a516dd60, type: 3}
+  m_Script: {fileID: 11500000, guid: 5990b5a083e677b43a081ab8b778e613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SubType: 2
-  IsReplace: 0
+  TimerTarget: 10
+  IsInfinit: 0
   IsBreak: 0
-  _breakTimer: 30
-  _breakTimerRandomRange: {x: -10, y: 20}
-  _objectMeshReference: {fileID: 2784145050289721911}
   _particuleEffect: {fileID: 3182010083006812770}
 --- !u!1001 &6038409292271979551
 PrefabInstance:
