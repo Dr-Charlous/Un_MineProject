@@ -16,7 +16,8 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        _actualDialogue.UpdateDialogue(NameText, DialogText);
+        _canvas.SetActive(false);
+        //_actualDialogue.UpdateDialogue(NameText, DialogText);
         _dialogue = _actualDialogue;
     }
 
@@ -27,17 +28,18 @@ public class DialogueManager : MonoBehaviour
             if (_timer < _timerValue)
                 _timer += Time.deltaTime;
 
-            if (_timer >= _timerValue && Input.GetMouseButtonDown(0))
+            if (_timer >= _timerValue && Input.GetMouseButtonDown(0))      //Input next line
             {
                 NextDialogue();
             }
         }
-        else if (Input.GetMouseButtonDown(1))
+        else if (Input.GetMouseButtonDown(1))     //Input exemple call dialog
         {
             UpdateDialogue(_dialogue);
         }
     }
 
+    //Next line
     void NextDialogue()
     {
         if (_actualDialogue.NextDialogue != null)
@@ -54,6 +56,7 @@ public class DialogueManager : MonoBehaviour
         _timer = 0;
     }
 
+    //Activate dialog box
     public void UpdateDialogue(Dialogues dialogue)
     {
         if (dialogue != null)
