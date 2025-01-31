@@ -46,6 +46,14 @@ public class Interactions : MonoBehaviour
                 if (inter != null)
                     inter.ChangeTarget();
 
+                //Control Panel
+                var panelMod = hit.transform.GetComponent<ControlPanel>();
+
+                if (panelMod != null)
+                {
+                    Debug.Log("Touch the panel");
+                }
+
                 //Objects
                 var obj = hit.transform.GetComponent<ObjectsComponents>();
 

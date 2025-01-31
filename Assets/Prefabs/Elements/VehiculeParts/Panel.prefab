@@ -1624,6 +1624,7 @@ MonoBehaviour:
   Position: {x: 0, y: 0, z: 0}
   Power: {fileID: 5802771548128300644}
   PowerLights: {fileID: 5543248871135972226}
+  Drill: {fileID: 3530350856462592546}
   _front: {fileID: 2165639367842974086}
   _back: {fileID: 3671119469242508545}
   _right: {fileID: 2308971886362945830}
@@ -1925,6 +1926,10 @@ PrefabInstance:
     - target: {fileID: 3134474450172758277, guid: 2cef2a80fa765164895b38c95bc3139d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621574300988326488, guid: 2cef2a80fa765164895b38c95bc3139d, type: 3}
+      propertyPath: IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6344213233304303380, guid: 2cef2a80fa765164895b38c95bc3139d, type: 3}
       propertyPath: m_Name
@@ -2332,6 +2337,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5621574300988326488, guid: 2cef2a80fa765164895b38c95bc3139d, type: 3}
+      propertyPath: IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6344213233304303380, guid: 2cef2a80fa765164895b38c95bc3139d, type: 3}
       propertyPath: m_Name
       value: ButtonOnOffPower
@@ -2667,13 +2676,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6344213233304303380, guid: 2cef2a80fa765164895b38c95bc3139d, type: 3}
       propertyPath: m_Name
-      value: ButtonOnOff (2)
+      value: ButtonOnOffDrill
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cef2a80fa765164895b38c95bc3139d, type: 3}
+--- !u!114 &3530350856462592546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5621574300988326488, guid: 2cef2a80fa765164895b38c95bc3139d, type: 3}
+  m_PrefabInstance: {fileID: 9150623317670832250}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed09cf0cac0a984aaf39b898d80332b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6161602186996932991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3134474450172758277, guid: 2cef2a80fa765164895b38c95bc3139d, type: 3}

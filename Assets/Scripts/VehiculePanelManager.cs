@@ -5,6 +5,7 @@ public class VehiculePanelManager : MonoBehaviour
     public Vector3 Position = Vector3.zero;
     public Interactible Power;
     public Interactible PowerLights;
+    public Interactible Drill;
 
     [SerializeField] Interactible _front;
     [SerializeField] Interactible _back;

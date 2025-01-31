@@ -63,7 +63,7 @@ public class RadarMining : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (!GameManager.Instance.IsGamePause && GameManager.Instance.PanelControl.Power.IsActive)
+        if (!GameManager.Instance.IsGamePause && GameManager.Instance.PanelControl.Power.IsActive && GameManager.Instance.PanelControl.Drill.IsActive)
         {
             Ressource ressource = other.GetComponent<Ressource>();
 
