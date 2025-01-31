@@ -52,6 +52,7 @@ public class Interactions : MonoBehaviour
                 if (panelMod != null)
                 {
                     Debug.Log("Touch the panel");
+                    panelMod.ChangePanelMod();
                 }
 
                 //Objects
